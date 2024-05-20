@@ -1,27 +1,15 @@
-The notebook consists of several cells that perform the following tasks:
+**FAISS Job Title Similarity and Speed Comparison Notebook**
 
-Data Loading: A CSV file containing job titles is loaded into a pandas DataFrame. The DataFrame is expected to have at least two columns: 'Title' and 'Cleaned_Title'.
+This notebook is designed to perform similarity searches on job titles using the FAISS library and includes a comparison of search speeds between two different FAISS index types.
 
-Encoding: The preprocessed titles are encoded into numerical vectors using the SentenceTransformer model. This model converts each title into a high-dimensional vector that captures semantic meaning.
+**Sections**
+**Title Cleaning**: The notebook begins by cleaning job titles from a CSV file, standardizing the text for more accurate vector representation.
 
-FAISS Index Creation: A FAISS index (IndexFlatL2) is created to facilitate efficient similarity searches. The index is compatible with L2 distance, which measures the Euclidean distance between vectors.
+**Single Title Search with IndexFlatL2**: It demonstrates a nearest neighbor search for a single title using the IndexFlatL2 index, which is precise but may not be the fastest for large datasets.
 
-Vector Normalization and Indexing: The title vectors are normalized to unit length and added to the FAISS index. Normalization is crucial for meaningful distance comparisons.
+**Speed Measurement with IndexFlatL2**: The speed of the search using IndexFlatL2 is measured to provide a baseline for comparison.
 
-Search Query Encoding: A search query (e.g., 'Director of People Operations') is encoded using the same SentenceTransformer model to ensure consistency with the indexed vectors.
+**Speed Comparison with IndexIVFFlat**: The notebook compares the search speed using IndexIVFFlat, which is faster than IndexFlatL2 due to its use of an inverted file system and quantization. However, it requires training on a subset of the data (2000 training points) and may trade off some accuracy for speed.
 
-Nearest Neighbor Search: The FAISS index is queried with the search vector to find the k-nearest neighbors (where k is a user-defined parameter, such as 5).
-
-Results Processing: The distances returned by the FAISS search are converted into similarity scores, and the results are merged with the original DataFrame to display the corresponding job titles.
-
-Output: The top k results are displayed, showing the most similar job titles to the search query based on the similarity scores.
-
-Usage
-To use this notebook, you need to have a CSV file with job titles and follow the steps outlined in the cells. The notebook is designed to be modular, allowing for easy adaptation to different datasets or search queries.
-
-Requirements
-pandas
-re (regular expressions)
-SentenceTransformer
-numpy
-faiss-cpu or faiss-gpu (depending on your hardware)
+**Conclusion**
+The notebook serves as a practical guide for cleaning job titles, encoding them into vector space, and performing efficient similarity searches with FAISS. It also provides insights into the trade-offs between search accuracy and speed by comparing two different types of FAISS indices.
