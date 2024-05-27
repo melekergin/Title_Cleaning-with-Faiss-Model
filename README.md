@@ -9,7 +9,7 @@ This notebook is designed to perform similarity searches on job titles using the
 
 **Speed Measurement with IndexFlatL2**: The speed of the search using IndexFlatL2 is measured to provide a baseline for comparison.
 
-**Speed Comparison with IndexIVFFlat**: The notebook compares the search speed using IndexIVFFlat, which is faster than IndexFlatL2 due to its use of an inverted file system and quantization. However, it requires training on a subset of the data (2000 training points) and may trade off some accuracy for speed.
+**Speed Comparison with IndexIVFFlat**: This section compares the search speed using IndexIVFFlat, which is faster than IndexFlatL2 due to its use of an inverted file system and quantization. However, it requires training on a subset of the data (2000 training points) and may trade off some accuracy for speed.
 
 **Conclusion**
-The notebook serves as a practical guide for cleaning job titles, encoding them into vector space, and performing efficient similarity searches with FAISS. It also provides insights into the trade-offs between search accuracy and speed by comparing two different types of FAISS indices.
+The section serves as a practical guide for cleaning job titles, encoding them into vector space, and performing efficient similarity searches with FAISS. It also provides insights into the trade-offs between search accuracy and speed by comparing two different types of FAISS indices.
